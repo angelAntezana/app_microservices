@@ -6,9 +6,11 @@ services:
     image: postgres:15.2
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ms-inventory
+      POSTGRES_DB: ms_inventory
       POSTGRES_USER: flamenik
       POSTGRES_PASSWORD: Test123
+#    volumes:
+#      - inventory-data:/var/lib/postgresql/data
     ports:
       - "5431:5431"
     expose:
@@ -25,6 +27,8 @@ services:
       MYSQL_USER: flamenik
       MYSQL_PASSWORD: Test123
       MYSQL_ROOT_PASSWORD: root
+#    volumes:
+#      - orders-data:/var/lib/mysql
     ports:
       - "3308:3306"
     expose:
@@ -39,6 +43,8 @@ services:
       POSTGRES_DB: ms_products
       POSTGRES_USER: flamenik
       POSTGRES_PASSWORD: Test123
+#    volumes:
+#      - products-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     expose:
@@ -47,3 +53,8 @@ services:
 
     # mysql -> /var/lib/mysql
     # postgres -> /var/lib/postgresql/data
+
+#volumes:
+#  inventory-data:
+#  orders-data:
+#  products-data:
